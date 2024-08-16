@@ -174,6 +174,8 @@ RSpec.describe Patterns::Calculation do
     end
 
     describe "when RedisCacheStore is used" do
+      after { Redis.new.flushdb }
+
       it "does not store data in cache if 'cache_expiry_period' is not set" do
         client = Redis.new
         class Rails
